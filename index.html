@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yiranesh Visvanathan | Computer Science Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #183247;
+      --muted: #667789;
+      --soft: #f5f8fb;
+      --paper: #ffffff;
+      --line: #dce5ee;
+      --accent: #3b7ca8;
+      --accent-dark: #245e83;
+      --warm: #f3efe8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--soft);
+      color: var(--ink);
+      font-family: "DM Sans", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 7vw;
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-dark);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+      gap: 3rem;
+      align-items: center;
+      min-height: calc(100vh - 68px);
+      padding: 5rem 7vw;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-tag,
+    .section-label,
+    .project-kicker {
+      color: var(--accent-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      margin: 0.85rem 0 1rem;
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 1;
+    }
+
+    .hero-sub {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-btns,
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 2rem;
+    }
+
+    .btn,
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0.7rem 1.15rem;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      color: var(--accent-dark);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .hero-card {
+      background: var(--warm);
+      border: 1px solid #e2d9ca;
+      border-radius: 8px;
+      padding: 1.4rem;
+    }
+
+    .photo-frame {
+      aspect-ratio: 4 / 5;
+      margin-bottom: 1.2rem;
+      overflow: hidden;
+      border: 1px solid #d9cdbc;
+      border-radius: 8px;
+      background: #fbf7f0;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .hero-card h2 {
+      margin-bottom: 0.75rem;
+      font-size: 1.15rem;
+    }
+
+    .hero-card p,
+    .section-intro,
+    .about-text,
+    .project-desc,
+    .project-features,
+    .contact-box p {
+      color: var(--muted);
+    }
+
+    section {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 4.5rem 7vw;
+    }
+
+    .section-header {
+      max-width: 720px;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      margin-top: 0.45rem;
+      font-size: clamp(1.8rem, 3vw, 2.55rem);
+      line-height: 1.15;
+    }
+
+    .section-intro {
+      margin-top: 0.85rem;
+    }
+
+    .about-grid,
+    .cv-box {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .about-text {
+      display: grid;
+      gap: 1rem;
+      font-size: 1.02rem;
+    }
+
+    .about-text strong {
+      color: var(--ink);
+    }
+
+    .skills-box,
+    .project-card,
+    .cv-box,
+    .contact-box {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1.3rem;
+    }
+
+    .skills-box h3 {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-item {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.45rem 0.75rem;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .projects-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+      gap: 1.5rem;
+    }
+
+    .project-title {
+      margin: 0.35rem 0 0.6rem;
+      font-size: 1.45rem;
+    }
+
+    .project-features {
+      display: grid;
+      gap: 0.55rem;
+      margin: 1rem 0 1.2rem 1.1rem;
+    }
+
+    .project-learning {
+      margin: 1rem 0;
+      padding: 0.85rem;
+      border-radius: 6px;
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .project-learning strong {
+      color: var(--ink);
+    }
+
+    .project-link {
+      color: var(--accent-dark);
+      font-weight: 700;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+
+    .project-screenshots {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      align-content: start;
+    }
+
+    .project-screenshots img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #edf2f7;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .project-screenshots img.wide {
+      grid-column: 1 / -1;
+      aspect-ratio: 16 / 7;
+    }
+
+    .cv-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cv-info p {
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .cv-highlights {
+      display: grid;
+      gap: 0.4rem;
+      margin-bottom: 1.4rem;
+      padding-left: 1.2rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .cv-preview {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .cv-preview-top {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      background: #0f2740;
+      padding: 1.4rem;
+    }
+
+    .cv-photo-small {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.25);
+      flex-shrink: 0;
+    }
+
+    .cv-photo-small img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .cv-name-block h4 {
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .cv-name-block p {
+      color: #a8cce0;
+      font-size: 0.7rem;
+    }
+
+    .cv-rows {
+      padding: 0.8rem 1.2rem;
+      background: var(--paper);
+    }
+
+    .cv-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .cv-row:last-child {
+      border-bottom: none;
+    }
+
+    .cv-row span {
+      color: var(--accent-dark);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .contact-box {
+      display: grid;
+      gap: 1rem;
+      padding: 2rem;
+    }
+
+    .contact-links {
+      margin-top: 0;
+    }
+
+    .contact-item {
+      border-color: var(--line);
+    }
+
+    footer {
+      padding: 2rem 7vw;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      text-align: center;
+      background: var(--paper);
+      font-size: 0.9rem;
+    }
+
+    .project-screenshots img {
+      cursor: zoom-in;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0, 0, 0, 0.85);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      cursor: zoom-out;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      object-fit: contain;
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .about-grid,
+      .project-card,
+      .cv-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 4rem;
+      }
+    }
+
+    @media (max-width: 620px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.65rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .hero,
+      section {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+
+      .project-screenshots {
+        grid-template-columns: 1fr;
+      }
+
+      .project-screenshots img.wide {
+        grid-column: auto;
+        aspect-ratio: 4 / 3;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-logo">Yiranesh Visvanathan</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div>
+        <div class="hero-tag">Computer Science Portfolio</div>
+        <h1>Hi, I'm Yiranesh.</h1>
+        <p class="hero-sub">
+          I enjoy learning programming by building small, useful projects. This portfolio shares a few Python projects I created while preparing for my computer science journey.
+        </p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn btn-primary">View my projects</a>
+          <a href="https://github.com/Yiranesh" target="_blank" rel="noopener" class="btn">GitHub</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="photo-frame">
+          <img src="assets/profile.jpg" alt="Yiranesh Visvanathan">
+        </div>
+        <h2>Future computer science student</h2>
+        <p>Focused on Python, problem solving, APIs, and practical software projects.</p>
+      </aside>
+    </header>
+
+    <section id="about">
+      <div class="section-header">
+        <div class="section-label">About</div>
+        <h2 class="section-title">A little about me</h2>
+        <p class="section-intro">
+          I am preparing for a computer science pathway by learning programming through hands-on projects.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            <strong>I like building things that solve real problems.</strong>
+            My projects helped me practise logic, file storage, APIs, and user-friendly output.
+          </p>
+          <p>
+            Computer science interests me because it combines logic, creativity, and real-world impact. I want to understand how software systems are built properly and create technology that is useful for students, families, and communities in Malaysia.
+          </p>
+        </div>
+
+        <div class="skills-box">
+          <h3>Skills</h3>
+          <div class="skills-grid">
+            <span class="skill-item">Python</span>
+            <span class="skill-item">Flask</span>
+            <span class="skill-item">HTML</span>
+            <span class="skill-item">CSS</span>
+            <span class="skill-item">REST APIs</span>
+            <span class="skill-item">JSON</span>
+            <span class="skill-item">GitHub</span>
+            <span class="skill-item">VS Code</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-header">
+        <div class="section-label">Projects</div>
+        <h2 class="section-title">What I have built</h2>
+        <p class="section-intro">
+          These projects show my progress through beginner-friendly but practical programming tasks.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+
+        <article class="project-card">
+          <div>
+            <div class="project-kicker">Project 01</div>
+            <h3 class="project-title">Student Grade Calculator</h3>
+            <p class="project-desc">
+              I built this to practise calculations, conditions, repeated input, and clear result formatting.
+            </p>
+            <ul class="project-features">
+              <li>Calculates letter grade and GPA for each subject</li>
+              <li>Computes overall CGPA</li>
+              <li>Shows Dean's List, Pass, or Fail status</li>
+              <li>Supports multiple students in one session</li>
+            </ul>
+            <p class="project-learning">
+              <strong>What I learned:</strong> This project taught me how to organise conditions clearly and make program output easier for a user to read.
+            </p>
+            <a href="https://github.com/Yiranesh/Student-grade-calculator" target="_blank" rel="noopener" class="project-link">View source code</a>
+          </div>
+          <div class="project-screenshots">
+            <img src="assets/grade-calculator-1.jpg" alt="Grade Calculator Dean's List result">
+            <img src="assets/grade-calculator-2.jpg" alt="Grade Calculator Fail result">
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div>
+            <div class="project-kicker">Project 02</div>
+            <h3 class="project-title">Expense Tracker</h3>
+            <p class="project-desc">
+              This project helped me practise saving and reading data from a JSON file.
+            </p>
+            <ul class="project-features">
+              <li>Adds expenses with category and amount</li>
+              <li>Displays saved records in a readable table</li>
+              <li>Shows category and monthly spending summaries</li>
+              <li>Includes delete feature and persistent JSON storage</li>
+            </ul>
+            <p class="project-learning">
+              <strong>What I learned:</strong> This helped me understand why saving data properly matters, especially when a program needs to remember past user entries.
+            </p>
+            <a href="https://github.com/Yiranesh/Expense-tracker" target="_blank" rel="noopener" class="project-link">View source code</a>
+          </div>
+          <div class="project-screenshots">
+            <img src="assets/expense-tracker-1.jpg" alt="Expense Tracker main menu">
+            <img src="assets/expense-tracker-2.jpg" alt="Expense Tracker adding an expense">
+            <img src="assets/expense-tracker-3.jpg" alt="Expense Tracker view all expenses" class="wide">
+            <img src="assets/expense-tracker-4.jpg" alt="Expense Tracker category summary">
+            <img src="assets/expense-tracker-5.jpg" alt="Expense Tracker monthly summary">
+            <img src="assets/expense-tracker-6.jpg" alt="Expense Tracker delete and exit" class="wide">
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div>
+            <div class="project-kicker">Project 03</div>
+            <h3 class="project-title">Weather App</h3>
+            <p class="project-desc">
+              I originally built this as a terminal app, then converted it into a web application using Flask. It was a good way to learn how routing and APIs work in a real project.
+            </p>
+            <ul class="project-features">
+              <li>Gets live weather data using OpenWeatherMap API</li>
+              <li>Shows temperature, humidity, wind speed, and conditions</li>
+              <li>Includes a 5-day forecast with daily cards</li>
+              <li>Compares weather side-by-side between two cities</li>
+              <li>Deployed live — accessible from any browser</li>
+            </ul>
+            <p class="project-learning">
+              <strong>What I learned:</strong> This introduced me to APIs, Flask routing, Jinja2 templates, and how to deploy a real web app so anyone can use it online.
+            </p>
+            <a href="https://github.com/Yiranesh/weather-app-web" target="_blank" rel="noopener" class="project-link">View source code</a>
+          </div>
+          <div class="project-screenshots">
+            <img src="assets/weather-app-1.jpg" alt="Weather App home page" class="wide">
+            <img src="assets/weather-app-2.jpg" alt="Weather App current weather">
+            <img src="assets/weather-app-3.jpg" alt="Weather App 5-day forecast">
+            <img src="assets/weather-app-4.jpg" alt="Weather App compare two cities" class="wide">
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="resume">
+      <div class="section-header">
+        <div class="section-label">Resume</div>
+        <h2 class="section-title">My background</h2>
+        <p class="section-intro">
+          A summary of my academic record, achievements, and co-curricular involvement.
+        </p>
+      </div>
+
+      <div class="cv-box">
+        <div class="cv-info">
+          <h3>Yiranesh Visvanathan</h3>
+          <p>
+            Completed Matriculation at Kolej Matrikulasi Pulau Pinang with a Semester 1 GPA of 4.00. Currently awaiting university intake.
+          </p>
+          <ul class="cv-highlights">
+            <li>Semester 1 GPA: 4.00 — Kolej Matrikulasi Pulau Pinang</li>
+            <li>SPM 2024: 9A — SMK St. Mark Butterworth</li>
+            <li>Silver Medalist — Olympiad Physics Malaysia (2026)</li>
+            <li>Represented Malaysia — Sakura Science Exchange Program, Japan (2023)</li>
+            <li>Fourth Place — National Robotics Competition</li>
+            <li>State-Level Public Speaking Champion (2021)</li>
+          </ul>
+          <a href="assets/CV-Yiranesh-Visvanathan.pdf" target="_blank" rel="noopener" class="btn btn-primary">Full CV</a>
+        </div>
+
+        <div class="cv-preview">
+          <div class="cv-preview-top">
+            <div class="cv-photo-small">
+              <img src="assets/profile.jpg" alt="Yiranesh Visvanathan">
+            </div>
+            <div class="cv-name-block">
+              <h4>Yiranesh Visvanathan</h4>
+              <p>Kolej Matrikulasi Pulau Pinang</p>
+              <p>yiraneshvisvanathan@gmail.com</p>
+            </div>
+          </div>
+          <div class="cv-rows">
+            <div class="cv-row">Education <span>Matriculation — SPM 9A</span></div>
+            <div class="cv-row">GPA <span>4.00 (Semester 1)</span></div>
+            <div class="cv-row">Achievements <span>Silver Medalist — Japan Exchange</span></div>
+            <div class="cv-row">Leadership <span>President — Deputy Head Prefect</span></div>
+            <div class="cv-row">Languages <span>BM — English — Tamil</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-header">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Get in touch</h2>
+        <p class="section-intro">
+          Thank you for taking the time to view my portfolio.
+        </p>
+      </div>
+
+      <div class="contact-box">
+        <h3>Contact details</h3>
+        <p>
+          Feel free to reach out by email or phone, or view the project code on GitHub.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:yiraneshvisvanathan@gmail.com" class="contact-item">yiraneshvisvanathan@gmail.com</a>
+          <a href="tel:01110572007" class="contact-item">011-10572007</a>
+          <a href="https://github.com/Yiranesh" target="_blank" rel="noopener" class="contact-item">GitHub portfolio</a>
+          <a href="assets/CV-Yiranesh-Visvanathan.pdf" download class="contact-item">Download CV</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Yiranesh Visvanathan — Computer Science Portfolio — 2026</p>
+  </footer>
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="" id="lightbox-img">
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    document.querySelectorAll('.project-screenshots img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
